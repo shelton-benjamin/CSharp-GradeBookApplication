@@ -24,22 +24,22 @@ namespace GradeBook.GradeBooks
             }
             totalGrade /= Students.Count;
 
-            if (averageGrade >= totalGrade * .8)
+            if (averageGrade > totalGrade * .8)
             {
                 return 'A';
             }
 
-            if (averageGrade >= totalGrade * .6 && averageGrade <= totalGrade * .8)
+            if (averageGrade > totalGrade * .6 && averageGrade < totalGrade * .8)
             {
                 return 'B';
             }
 
-            if (averageGrade >= totalGrade * .4 && averageGrade <= totalGrade * .6)
+            if (averageGrade > totalGrade * .4 && averageGrade < totalGrade * .6)
             {
                 return 'C';
             }
 
-            if (averageGrade >= totalGrade * .2 && averageGrade <= totalGrade * .4)
+            if (averageGrade > totalGrade * .2 && averageGrade < totalGrade * .4)
             {
                 return 'D';
             }
