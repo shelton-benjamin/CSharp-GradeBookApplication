@@ -1,5 +1,7 @@
 ﻿using GradeBook.Enums;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GradeBook.GradeBooks
 {
@@ -17,29 +19,38 @@ namespace GradeBook.GradeBooks
                 throw new InvalidOperationException("Ranked grading requires 5 or more students.");
             }
 
-            var totalGrade = 0.0;
-            foreach (var student in Students)
+            
+            var gradeList = new List<double>();
+            foreach(var student in Students)
             {
-                totalGrade += student.AverageGrade;
+               gradeList.Add(student.AverageGrade);
+               
             }
-            totalGrade /= Students.Count;
 
-            if (averageGrade > totalGrade * .8)
+            var gradeCount = gradeList.Count;
+            var higher = 0;
+            foreach(var grade in gradeList)
+            {
+                if (grade > averageGrade)
+                    higher++;
+            }
+
+            if (higher < gradeCount * 0.2)
             {
                 return 'A';
             }
 
-            if (averageGrade > totalGrade * .6 && averageGrade < totalGrade * .8)
+            if (higher < gradeCount * 0.4)
             {
                 return 'B';
             }
 
-            if (averageGrade > totalGrade * .4 && averageGrade < totalGrade * .6)
+            if (higher < gradeCount * 0.6)
             {
                 return 'C';
             }
 
-            if (averageGrade > totalGrade * .2 && averageGrade < totalGrade * .4)
+            if (higher < gradeCount * 0.8)
             {
                 return 'D';
             }
