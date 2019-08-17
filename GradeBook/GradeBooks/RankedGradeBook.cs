@@ -7,9 +7,10 @@ namespace GradeBook.GradeBooks
 {
     public class RankedGradeBook : BaseGradeBook
     {
-        public RankedGradeBook(string name) : base(name)
+        public RankedGradeBook(string name, bool weighted) : base(name, weighted)
         {
             Type = GradeBookType.Ranked;
+
         }
 
         public override void CalculateStatistics()
